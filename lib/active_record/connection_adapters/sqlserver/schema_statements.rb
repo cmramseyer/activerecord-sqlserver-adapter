@@ -425,7 +425,11 @@ module ActiveRecord
                        else ci[:type]
                        end
                 value = default.match(/\A\((.*)\)\Z/m)[1]
-                value = select_value("SELECT CAST(#{value} AS #{type}) AS value", "SCHEMA")
+                value = if type == 'ENTERO_TG'
+                  select_value("SELECT CAST(#{value} AS int) AS value", "SCHEMA")
+                else
+                  select_value("SELECT CAST(#{value} AS #{type}) AS value", "SCHEMA")
+                end
                 [value, nil]
               end
             end
