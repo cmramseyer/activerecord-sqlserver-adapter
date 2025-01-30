@@ -429,6 +429,7 @@ module ActiveRecord
                         when 'ENTERO_TG' then select_value("SELECT CAST(#{value} AS int) AS value", "SCHEMA")
                         when 'DECIMAL_TG' then select_value("SELECT CAST(#{value} AS decimal) AS value", "SCHEMA")
                         when 'ENTEROXL_TG' then select_value("SELECT CAST(#{value} AS bigint) AS value", "SCHEMA")
+                        when 'D_ID' then select_value("SELECT CAST(#{value} AS bigint) AS value", "SCHEMA")
                         else
                           select_value("SELECT CAST(#{value} AS #{type}) AS value", "SCHEMA")
                         end
